@@ -31,20 +31,6 @@ class UIFunctions():
 
     def maximize_restore(self):
         if self.win.windowState() == Qt.WindowState.WindowMaximized:
-            self.win.setWindowState(Qt.WindowState.WindowNoState)
             self.win.showNormal()
-            self.win.appMargins.setContentsMargins(5, 5, 5, 5)
         else:
             self.win.showMaximized()
-            self.win.appMargins.setContentsMargins(0, 0, 0, 0)
-
-        """if self.GLOBAL_STATE:
-            self.GLOBAL_STATE = False
-            self.win.showNormal()
-            self.win.appMargins.setContentsMargins(5, 5, 5, 5)
-        else:
-            self.GLOBAL_STATE = True
-            self.win.showMaximized()
-            self.win.appMargins.setContentsMargins(0, 0, 0, 0)"""
-
-    

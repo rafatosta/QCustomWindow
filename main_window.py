@@ -22,12 +22,6 @@ class MainWindow(QMainWindow):
         self.setWindowFlags(Qt.WindowType.Window | Qt.WindowType.FramelessWindowHint |
                             Qt.WindowType.WindowMinMaxButtonsHint)
         # self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
-    
-    """def resizeEvent(self, e):
-        if self.windowState() == Qt.WindowState.WindowMaximized:
-            self.ui_func.maximize_restore()
-            print(self.windowState())
-        print('----')"""
 
 
 def main():
