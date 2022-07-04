@@ -2,6 +2,8 @@ from PyQt6.QtCore import Qt, QEvent
 from PyQt6.QtWidgets import QGraphicsDropShadowEffect
 from PyQt6.QtGui import QColor
 
+from custom_grips import CustomGrip
+
 
 class UIFunctions():
     GLOBAL_STATE = False
@@ -18,13 +20,18 @@ class UIFunctions():
         self.win.titleRightInfo.mouseDoubleClickEvent = dobleClickMaximizeRestore
 
         # MOVE WINDOW / MAXIMIZE / RESTORE
-
         def moveWindow(event):
             # MOVE WINDOW
             if event.buttons() == Qt.MouseButton.LeftButton:
                 window = self.win.window().windowHandle()
                 window.startSystemMove()
         self.win.titleRightInfo.mouseMoveEvent = moveWindow
+
+        # CUSTOM GRIPS
+        self.left_grip = CustomGrip(self.win, Qt.Edge.LeftEdge, True)
+        self.right_grip = CustomGrip(self.win, Qt.Edge.RightEdge, True)
+        self.top_grip = CustomGrip(self.win, Qt.Edge.TopEdge, True)
+        self.bottom_grip = CustomGrip(self.win, Qt.Edge.BottomEdge, True)
 
         # DROP SHADOW
         self.shadow = QGraphicsDropShadowEffect(self.win)
@@ -53,7 +60,20 @@ class UIFunctions():
         if self.win.windowState() == Qt.WindowState.WindowMaximized:
             self.win.appMargins.setContentsMargins(5, 5, 5, 5)
             self.win.showNormal()
+            self.left_grip.show()
+            self.right_grip.show()
+            self.top_grip.show()
+            self.bottom_grip.show()
         else:
             self.win.appMargins.setContentsMargins(0, 0, 0, 0)
             self.win.showMaximized()
-            
+            self.left_grip.hide()
+            self.right_grip.hide()
+            self.top_grip.hide()
+            self.bottom_grip.hide()
+
+    def resize_grips(self):
+        self.left_grip.setGeometry(0, 10, 10, self.win.height())
+        self.right_grip.setGeometry(self.win.width() - 10, 10, 10, self.win.height())
+        self.top_grip.setGeometry(0, 0, self.win.width(), 10)
+        self.bottom_grip.setGeometry(0, self.win.height() - 10, self.win.width(), 10)

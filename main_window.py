@@ -14,6 +14,12 @@ class MainWindow(QMainWindow):
 
         self.ui_func = UIFunctions(self)
         self.ui_func.uiDefinitions()
+    
+    # RESIZE EVENTS
+    # ///////////////////////////////////////////////////////////////
+    def resizeEvent(self, event):
+        # Update Size Grips
+        self.ui_func.resize_grips()
 
 
 def main():
