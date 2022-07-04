@@ -15,10 +15,22 @@ class UIFunctions():
                 self.maximize_restore()
         self.win.titleRightInfo.mouseDoubleClickEvent = dobleClickMaximizeRestore
 
+
+        # MOVE WINDOW / MAXIMIZE / RESTORE
+        def moveWindow(event):
+            # MOVE WINDOW
+            if event.buttons() == Qt.MouseButton.LeftButton:
+                window = self.win.window().windowHandle()
+                window.startSystemMove()
+                
+        self.win.titleRightInfo.mouseMoveEvent = moveWindow
+
+
         # Decoração da janela
         self.win.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.win.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
+        ## ----- Botões ------ ##
         # MINIMIZE
         self.win.minimizeAppBtn.clicked.connect(
             lambda: self.win.showMinimized())
