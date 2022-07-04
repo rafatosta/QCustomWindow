@@ -1,7 +1,6 @@
 from PyQt6.QtWidgets import QMainWindow, QApplication
 from PyQt6.QtCore import Qt
 from PyQt6 import uic
-from PyQt5.QtWidgets import QDesktopWidget
 import sys
 import os
 
@@ -15,13 +14,6 @@ class MainWindow(QMainWindow):
 
         self.ui_func = UIFunctions(self)
         self.ui_func.uiDefinitions()
-        
-
-    def initBasicUi(self):
-        """Window decoration settings """
-        self.setWindowFlags(Qt.WindowType.Window | Qt.WindowType.FramelessWindowHint |
-                            Qt.WindowType.WindowMinMaxButtonsHint)
-        # self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
 
 def main():
