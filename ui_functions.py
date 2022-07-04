@@ -50,10 +50,10 @@ class UIFunctions():
         self.win.closeAppBtn.clicked.connect(lambda: self.win.close())
 
     def maximize_restore(self):
-
         if self.win.windowState() == Qt.WindowState.WindowMaximized:
-            self.win.showNormal()
             self.win.appMargins.setContentsMargins(5, 5, 5, 5)
+            self.win.showNormal()
         else:
-            self.win.showMaximized()
             self.win.appMargins.setContentsMargins(0, 0, 0, 0)
+            self.win.showMaximized()
+            
